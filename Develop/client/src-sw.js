@@ -4,6 +4,10 @@ const { registerRoute } = require('workbox-routing');
 const { CacheableResponsePlugin } = require('workbox-cacheable-response');
 const { ExpirationPlugin } = require('workbox-expiration');
 const { precacheAndRoute } = require('workbox-precaching/precacheAndRoute');
+const { setConfig } = require('workbox-core');
+
+// Enable logging in the service worker
+setConfig({ debug: true });
 
 precacheAndRoute(self.__WB_MANIFEST);
 
@@ -24,7 +28,17 @@ warmStrategyCache({
   strategy: pageCache,
 });
 
-registerRoute(({ request }) => request.mode === 'navigate', pageCache);
+registerRoute(({ request }) => request.mode === 'navigate', async () => {
+  try {
+    const cachedResponse = await pageCache.handle({ request });
+    if (cachedResponse) {
+      return cachedResponse;
+    }
+    return await fetch(request);
+  } catch (error) {
+    return caches.match('/index.html');
+  }
+});
 
 // TODO: Implement asset caching
 registerRoute(

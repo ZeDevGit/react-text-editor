@@ -27,6 +27,8 @@ module.exports = {
       description: 'A text editor Progressive Web Application',
       background_color: '#ffffff',
       theme_color: '#2196f3',
+      start_url: '/',
+      publicPath: '/',
       icons: [
         {
           src: path.resolve('./src/images/logo.png'),
