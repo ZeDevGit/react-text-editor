@@ -1,4 +1,4 @@
-# React Text Editor
+## React Text Editor
 
 ## Table of Contents
 - [Description](#description)
@@ -9,7 +9,7 @@
 
 - [Features](#features)
 
-- [Demonstration](#demonstration)
+- [Render Link](#render-link)
 
 - [Questions](#questions)
 
@@ -52,11 +52,15 @@ WHEN I deploy to Render
 THEN I should have proper build scripts for a webpack application
 ```
 ## Features
+- A rich text editor build using React
+- Can install a service worker onto your browser to allow for both online/offline functionality
+- Useful for basic text editing where you're online or offline
 
-## Demonstration
-
+## Render Link
+ [Render Link](https://react-text-editor-sica.onrender.com/)
 
 ## License
  ![Empty Badge](https://img.shields.io/badge/MIT-License-blue)
+
 ## Questions
  [ZeDevGit](https://github.com/ZeDevGit)
